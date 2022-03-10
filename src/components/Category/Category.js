@@ -24,15 +24,15 @@ const Category = ({ products, categories }) => {
     return (
         <Container>
             <main className={classes.container}>
-                <Grid container justifyContent="center">
+                <Grid container alignItems="center">
                     <Link to="/" className={classes.titleBreadcrumb}>
-                        Home
+                        HOME
                     </Link>
                     <Typography variant="h4" className={classes.slash}>
                         {" "}
                         /{" "}
                     </Typography>
-                    <Typography className={classes.titleBreadcrumb}>
+                    <Typography className={classes.itemBreadcrumb}>
                         {listOfCategories.includes(category)
                             ? category.toUpperCase()
                             : "All Products"}

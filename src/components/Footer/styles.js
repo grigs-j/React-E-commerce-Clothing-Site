@@ -1,15 +1,16 @@
 import { makeStyles } from "@material-ui/core";
 
 export default makeStyles((theme) => ({
-    navbar: {
-        backgroundColor: "rgb(245,245,245)",
+    container: {
+        backgroundColor: "black",
+        padding: "4rem 0",
     },
-    homelink: {
-        color: "black",
+    logo: {
+        color: "white",
         fontWeight: "700",
         fontSize: "1.25rem",
-        marginRight: "2rem",
         textDecoration: "none",
+        marginBottom: "1rem",
         transition: theme.transitions.create(["color", "background-color"], {
             duration: theme.transitions.duration.complex,
         }),
@@ -18,32 +19,28 @@ export default makeStyles((theme) => ({
         },
     },
     link: {
-        color: "black",
-        fontWeight: "700",
-        fontSize: "1rem",
-        marginRight: "2rem",
+        color: "white",
+        fontSize: "1.25rem",
+        margin: "0 1rem 1.5rem",
+        transition: theme.transitions.create(["color", "background-color"], {
+            duration: theme.transitions.duration.standard,
+        }),
+        "&:hover": {
+            color: "gray",
+        },
+    },
+    portLink: {
+        color: "gray",
         textDecoration: "none",
         transition: theme.transitions.create(["color", "background-color"], {
             duration: theme.transitions.duration.complex,
         }),
         "&:hover": {
-            color: "gray",
+            color: "white",
         },
     },
-    navOpenToggle: {
-        cursor: "pointer",
-        color: "black",
-        transition: theme.transitions.create(["color", "background-color"], {
-            duration: theme.transitions.duration.complex,
-        }),
-        "&:hover": {
-            color: "gray",
-        },
-    },
-    drawer: {
-        width: "100%",
-    },
-    navCloseToggle: {
-        cursor: "pointer",
+    jgtext: {
+        marginTop: "1.25rem",
+        color: "white",
     },
 }));

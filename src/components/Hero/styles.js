@@ -21,7 +21,7 @@ export default makeStyles((theme) => ({
         top: "70%",
         left: "50%",
         transform: "translate(-50%,-50%)",
-        width: "90%",
+        width: "85%",
         color: "white",
         display: "flex",
         flexDirection: "column",
@@ -42,6 +42,9 @@ export default makeStyles((theme) => ({
         background: "white",
         color: "black",
         padding: ".5rem 1.5rem",
+        transition: theme.transitions.create(["color", "background-color"], {
+            duration: theme.transitions.duration.complex,
+        }),
         "&:hover": {
             color: "white",
             backgroundColor: "black",

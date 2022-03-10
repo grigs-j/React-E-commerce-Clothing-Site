@@ -3,6 +3,7 @@ import {
     responsiveFontSizes,
     ThemeProvider,
     CssBaseline,
+    Hidden,
 } from "@material-ui/core";
 import React, { useContext } from "react";
 import {
@@ -17,15 +18,26 @@ import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Cart from "./components/Cart/Cart";
 import ContactPage from "./components/ContactPage/ContactPage";
+import AccentBar from "./components/AccentBar/AccentBar";
+import Footer from "./components/Footer/Footer";
 import { productsData, categoriesData } from "./data";
 import { Context } from "./Context";
 
 let theme = createTheme({
     typography: {
         fontFamily: "Josefin Sans",
+        transition: "all 1000ms fade-in-out",
     },
 });
 theme = responsiveFontSizes(theme);
+
+// TODO:
+// - NAV STYLES +
+// - POPPER STYLES
+// - MOBILE MENU
+// - PAGINATION
+// - SEARCHBAR?
+// - CHECKOUT
 
 function App() {
     const { savedItems } = useContext(Context);
@@ -40,41 +52,74 @@ function App() {
                 <CssBaseline />
                 <Navbar categories={categoriesData} />
                 <Routes>
-                    <Route exact path="/" element={<Hero />} />
+                    <Route
+                        exact
+                        path="/"
+                        element={
+                            <>
+                                <Hidden xsDown>
+                                    <AccentBar />
+                                </Hidden>
+                                <Hero />
+                                <Footer />
+                            </>
+                        }
+                    />
                     <Route
                         path="/products"
                         element={
-                            <Category
-                                products={productsData}
-                                categories={categoriesData}
-                            />
+                            <>
+                                <AccentBar />
+                                <Category
+                                    products={productsData}
+                                    categories={categoriesData}
+                                />
+                                <Footer />
+                            </>
                         }
                     />
                     <Route
                         path="/products/:category"
                         element={
-                            <Category
-                                products={productsData}
-                                categories={categoriesData}
-                            />
+                            <>
+                                <AccentBar />
+                                <Category
+                                    products={productsData}
+                                    categories={categoriesData}
+                                />
+                                <Footer />
+                            </>
                         }
                     />
                     <Route
                         path="/products/:category/:productId"
                         element={
-                            <ProductPage
-                                products={productsData}
-                                categories={categoriesData}
-                            />
+                            <>
+                                <AccentBar />
+                                <ProductPage
+                                    products={productsData}
+                                    categories={categoriesData}
+                                />
+                                <Footer />
+                            </>
                         }
                     />
 
-                    <Route path="/contact" element={<ContactPage />} />
+                    <Route
+                        path="/contact"
+                        element={
+                            <>
+                                <ContactPage />
+                                <Footer />
+                            </>
+                        }
+                    />
                     <Route
                         path="/cart"
                         element={
                             <PrivateRoute>
                                 <Cart />
+                                <Footer />
                             </PrivateRoute>
                         }
                     />

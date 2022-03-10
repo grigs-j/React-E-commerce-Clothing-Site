@@ -35,9 +35,9 @@ const ProductPage = ({ products, categories }) => {
     return (
         <main className={classes.container}>
             <Container>
-                <Grid container justifyContent="center">
+                <Grid container alignItems="center">
                     <Link to="/" className={classes.titleBreadcrumb}>
-                        Home
+                        HOME
                     </Link>
                     <Typography variant="h4" className={classes.slash}>
                         {" "}
@@ -47,8 +47,15 @@ const ProductPage = ({ products, categories }) => {
                         to={`/products/${item.category}`}
                         className={classes.titleBreadcrumb}
                     >
-                        {item.category}
+                        {item.category.toUpperCase()}
                     </Link>
+                    <Typography variant="h4" className={classes.slash}>
+                        {" "}
+                        /{" "}
+                    </Typography>
+                    <Typography className={classes.itemBreadcrumb}>
+                        {item.name}
+                    </Typography>
                 </Grid>
                 <Divider className={classes.divider} />
                 <Grid container justifyContent="center" spacing={4}>

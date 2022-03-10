@@ -5,7 +5,7 @@ import {
     Grid,
     Typography,
 } from "@material-ui/core";
-import { StarHalf, StarRate } from "@material-ui/icons";
+import { StarRate } from "@material-ui/icons";
 import React from "react";
 import { Link } from "react-router-dom";
 import useStyles from "./styles";
@@ -17,12 +17,14 @@ const ProductCard = ({ product, category }) => {
             <Card>
                 <Link to={`/products/${category}/${product.productCode}`}>
                     <CardMedia
+                        className={classes.card}
                         component="img"
                         height="425"
-                        image={product.imageUrl}
+                        src={product.imageUrl}
+                        alt=""
                     />
                 </Link>
-                <CardContent className={classes.card}>
+                <CardContent className={classes.cardText}>
                     <Typography variant="h6" align="center">
                         {product.name}
                     </Typography>

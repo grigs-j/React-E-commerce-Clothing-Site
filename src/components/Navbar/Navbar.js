@@ -3,20 +3,17 @@ import {
     Toolbar,
     List,
     ListItem,
-    Typography,
     Hidden,
     SwipeableDrawer,
     MenuItem,
     Button,
     ClickAwayListener,
-    useScrollTrigger,
     Popper,
     MenuList,
     Menu,
     Grid,
     IconButton,
     Badge,
-    Slide,
     Container,
 } from "@material-ui/core";
 import { ArrowRight, MenuRounded, ShoppingCart } from "@material-ui/icons";
@@ -43,83 +40,107 @@ const Navbar = ({ categories }) => {
     };
 
     //cart badge logic
-    const quantities = savedItems.map((item) => item.qty);
-    const totalQty = quantities.reduce((a, c) => Number(a) + Number(c));
-
-    //accent bar hide logic
-    // function HideOnScroll(props) {
-    //     const { children, window } = props;
-    //     const trigger = useScrollTrigger({
-    //         target: window ? window() : undefined,
-    //     });
-
-    //     return (
-    //         <Slide appear={false} direction="down" in={!trigger}>
-    //             {children}
-    //         </Slide>
-    //     );
-    // }
+    const quantities = savedItems ? savedItems.map((item) => item.qty) : 0;
+    const totalQty = quantities.reduce((a, c) => a + c, 0);
 
     // console.log(savedItems);
     return (
         <AppBar position="fixed" className={classes.navbar}>
             <Toolbar>
                 <Container>
-                    <Typography>LOGO</Typography>
+                    <Grid container alignItems="center">
+                        <Grid item xs={4}>
+                            <Hidden smDown>
+                                <Link to="/products" className={classes.link}>
+                                    ALL PRODUCTS
+                                </Link>
 
-                    <Hidden xsDown>
-                        <Link to="/">HOME</Link>
-                        <Link to="/products">ALL PRODUCTS</Link>
-                        <Button onClick={handleDropdown}>Categories</Button>
-                        <Popper
-                            open={openCat}
-                            disablePortal={true}
-                            transition={true}
-                        >
-                            {
-                                <ClickAwayListener onClickAway={handleCatClose}>
-                                    <Menu
-                                        anchorEl={anchorEl}
-                                        open={openCat}
-                                        onClose={handleCatClose}
-                                        anchorOrigin={{
-                                            horizontal: "right",
-                                        }}
-                                    >
-                                        <MenuList>
-                                            <MenuItem onClick={handleCatClose}>
-                                                {categories.map((category) => (
-                                                    <Link
-                                                        to={`/products/${category.routeName}`}
-                                                        key={category.title}
+                                <Button
+                                    onClick={handleDropdown}
+                                    className={classes.link}
+                                >
+                                    Categories
+                                </Button>
+                                <Popper
+                                    open={openCat}
+                                    disablePortal={true}
+                                    transition={true}
+                                >
+                                    {
+                                        <ClickAwayListener
+                                            onClickAway={handleCatClose}
+                                        >
+                                            <Menu
+                                                anchorEl={anchorEl}
+                                                open={openCat}
+                                                onClose={handleCatClose}
+                                                anchorOrigin={{
+                                                    horizontal: "right",
+                                                }}
+                                            >
+                                                <MenuList>
+                                                    <MenuItem
+                                                        onClick={handleCatClose}
                                                     >
-                                                        {category.title}
-                                                    </Link>
-                                                ))}
-                                            </MenuItem>
-                                        </MenuList>
-                                    </Menu>
-                                </ClickAwayListener>
-                            }
-                        </Popper>
-                        <Link to="/contact">CONTACT US</Link>
-                        <IconButton component={Link} to="/cart" color="default">
-                            <Badge
-                                badgeContent={
-                                    totalQty.length !== 0 ? totalQty : null
-                                }
-                                color="secondary"
+                                                        {categories.map(
+                                                            (category) => (
+                                                                <Link
+                                                                    to={`/products/${category.routeName}`}
+                                                                    key={
+                                                                        category.title
+                                                                    }
+                                                                >
+                                                                    {
+                                                                        category.title
+                                                                    }
+                                                                </Link>
+                                                            )
+                                                        )}
+                                                    </MenuItem>
+                                                </MenuList>
+                                            </Menu>
+                                        </ClickAwayListener>
+                                    }
+                                </Popper>
+                            </Hidden>
+                            <Hidden mdUp>
+                                <MenuRounded
+                                    className={classes.navOpenToggle}
+                                    onClick={() => setOpenMobile(true)}
+                                />
+                            </Hidden>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Link to="/" className={classes.homelink}>
+                                COPYPAXI
+                            </Link>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Hidden xsDown>
+                                <Link to="/contact" className={classes.link}>
+                                    CONTACT US
+                                </Link>
+                            </Hidden>
+                            <IconButton
+                                component={Link}
+                                to="/cart"
+                                color="default"
+                                className={classes.cartBtn}
                             >
-                                <ShoppingCart />
-                            </Badge>
-                        </IconButton>
-                    </Hidden>
-                    <Hidden smUp>
-                        <MenuRounded
-                            className={classes.navOpenToggle}
-                            onClick={() => setOpenMobile(true)}
-                        />
-                    </Hidden>
+                                <Badge
+                                    badgeContent={
+                                        quantities.length !== 0
+                                            ? totalQty
+                                            : null
+                                    }
+                                    color="secondary"
+                                >
+                                    <ShoppingCart />
+                                </Badge>
+                            </IconButton>
+                        </Grid>
+                    </Grid>
+
                     <SwipeableDrawer
                         className={classes.drawer}
                         open={openMobile}
@@ -180,11 +201,6 @@ const Navbar = ({ categories }) => {
                     </SwipeableDrawer>
                 </Container>
             </Toolbar>
-            <Grid item className={classes.accentBar}>
-                <Container>
-                    <Typography variant="h5">test test test</Typography>
-                </Container>
-            </Grid>
         </AppBar>
     );
 };
