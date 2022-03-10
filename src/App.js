@@ -1,4 +1,9 @@
-import { Container } from "@material-ui/core";
+import {
+    createTheme,
+    responsiveFontSizes,
+    ThemeProvider,
+    CssBaseline,
+} from "@material-ui/core";
 import React, { useContext } from "react";
 import {
     BrowserRouter as Router,
@@ -11,8 +16,16 @@ import Category from "./components/Category/Category";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Cart from "./components/Cart/Cart";
+import ContactPage from "./components/ContactPage/ContactPage";
 import { productsData, categoriesData } from "./data";
 import { Context } from "./Context";
+
+let theme = createTheme({
+    typography: {
+        fontFamily: "Josefin Sans",
+    },
+});
+theme = responsiveFontSizes(theme);
 
 function App() {
     const { savedItems } = useContext(Context);
@@ -22,13 +35,14 @@ function App() {
     };
 
     return (
-        <Container>
-            <Router>
+        <Router>
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
                 <Navbar categories={categoriesData} />
                 <Routes>
                     <Route exact path="/" element={<Hero />} />
                     <Route
-                        path="/products/:category"
+                        path="/products"
                         element={
                             <Category
                                 products={productsData}
@@ -37,7 +51,7 @@ function App() {
                         }
                     />
                     <Route
-                        path="/products"
+                        path="/products/:category"
                         element={
                             <Category
                                 products={productsData}
@@ -55,7 +69,7 @@ function App() {
                         }
                     />
 
-                    {/* <Route path="/contact" element={<Contact />} /> */}
+                    <Route path="/contact" element={<ContactPage />} />
                     <Route
                         path="/cart"
                         element={
@@ -65,8 +79,8 @@ function App() {
                         }
                     />
                 </Routes>
-            </Router>
-        </Container>
+            </ThemeProvider>
+        </Router>
     );
 }
 

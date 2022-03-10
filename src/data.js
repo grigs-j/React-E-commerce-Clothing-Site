@@ -65,7 +65,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 12,
         orders: 312,
         color: "Gray",
         thumbnailUrls: [
@@ -85,7 +85,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 10,
         orders: 312,
         color: "Red",
         thumbnailUrls: [
@@ -106,7 +106,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 52,
         orders: 312,
         color: "Maroon",
         thumbnailUrls: [
@@ -126,7 +126,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 105,
         orders: 312,
         color: "Blue",
         thumbnailUrls: [
@@ -146,7 +146,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 15,
         orders: 312,
         color: "Gray",
         thumbnailUrls: [
@@ -167,7 +167,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 19,
         orders: 312,
         color: "Iron",
         thumbnailUrls: [
@@ -187,7 +187,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 6,
         orders: 312,
         color: "Blue",
         thumbnailUrls: [
@@ -207,7 +207,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 17,
         orders: 312,
         color: "Ice Stripe",
         thumbnailUrls: [
@@ -228,7 +228,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 43,
         orders: 312,
         color: "Deep Ocean",
         thumbnailUrls: [
@@ -248,7 +248,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 56,
         orders: 312,
         color: "Blue/Gray",
         thumbnailUrls: [
@@ -268,7 +268,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 19,
         orders: 312,
         color: "Spruce/Indigo",
         thumbnailUrls: [
@@ -289,7 +289,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 12,
         orders: 312,
         color: "Mixed",
         thumbnailUrls: [
@@ -309,7 +309,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 10,
         orders: 312,
         color: "Mixed",
         thumbnailUrls: [
@@ -329,7 +329,7 @@ export const productsData = [
         desc: {
             about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
-        reviews: 102,
+        reviews: 20,
         orders: 312,
         color: "Blue/Orange",
         thumbnailUrls: [
