@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import { Grid, Divider, Typography, Container } from "@material-ui/core";
 import { Link, useParams } from "react-router-dom";
 import useStyles from "./styles";
+import PaginatedItems from "../PaginatedItems/PaginatedItems";
 
 const Category = ({ products, categories }) => {
+    //scrolling up to the top of the page every time the page changes
+    // useEffect(() => {
+    //     window.scroll(0, 0);
+    // }, [page, category]);
+
     const classes = useStyles();
     const { category } = useParams();
+
     const listOfCategories = [
         "bottoms",
         "hoodies",
@@ -20,6 +27,9 @@ const Category = ({ products, categories }) => {
             ? product.category === category
             : products
     );
+    const numberOfPages = Math.ceil(filteredData.length / 9);
+    const firstPage = numberOfPages - (numberOfPages - 1);
+    const lastPage = Math.ceil(filteredData.length);
 
     return (
         <Container>
@@ -55,6 +65,11 @@ const Category = ({ products, categories }) => {
                         </Grid>
                     ))}
                 </Grid>
+                {/* {numberOfPages === 1 ? null : (
+                    <Grid container>
+                        <PaginatedItems itemsPerPage={4} />
+                    </Grid>
+                )} */}
             </main>
         </Container>
     );

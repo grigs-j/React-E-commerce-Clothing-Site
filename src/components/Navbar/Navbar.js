@@ -7,16 +7,19 @@ import {
     SwipeableDrawer,
     MenuItem,
     Button,
-    ClickAwayListener,
-    Popper,
-    MenuList,
     Menu,
     Grid,
     IconButton,
     Badge,
     Container,
+    Divider,
 } from "@material-ui/core";
-import { ArrowRight, MenuRounded, ShoppingCart } from "@material-ui/icons";
+import {
+    ArrowRight,
+    ArrowRightAlt,
+    MenuRounded,
+    ShoppingCart,
+} from "@material-ui/icons";
 import React, { useState, useContext } from "react";
 import { Context } from "../../Context";
 import useStyles from "./styles";
@@ -24,7 +27,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = ({ categories }) => {
     const [openMobile, setOpenMobile] = useState(false);
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState(false);
     const openCat = Boolean(anchorEl);
     const classes = useStyles();
 
@@ -36,14 +39,14 @@ const Navbar = ({ categories }) => {
     };
 
     const handleCatClose = () => {
-        setAnchorEl(null);
+        setAnchorEl(false);
+        setOpenMobile(false);
     };
 
     //cart badge logic
     const quantities = savedItems ? savedItems.map((item) => item.qty) : 0;
     const totalQty = quantities.reduce((a, c) => a + c, 0);
 
-    // console.log(savedItems);
     return (
         <AppBar position="fixed" className={classes.navbar}>
             <Toolbar>
@@ -58,50 +61,39 @@ const Navbar = ({ categories }) => {
                                 <Button
                                     onClick={handleDropdown}
                                     className={classes.link}
+                                    disableRipple
                                 >
                                     Categories
                                 </Button>
-                                <Popper
+                                <Menu
                                     open={openCat}
-                                    disablePortal={true}
-                                    transition={true}
+                                    onClose={handleCatClose}
+                                    anchorEl={anchorEl}
+                                    getContentAnchorEl={null}
+                                    anchorOrigin={{
+                                        vertical: "bottom",
+                                        horizontal: "center",
+                                    }}
+                                    transformOrigin={{
+                                        vertical: "top",
+                                        horizontal: "center",
+                                    }}
                                 >
-                                    {
-                                        <ClickAwayListener
-                                            onClickAway={handleCatClose}
+                                    {categories.map((category) => (
+                                        <MenuItem
+                                            onClick={handleCatClose}
+                                            className={classes.menuItem}
+                                            key={category.title}
                                         >
-                                            <Menu
-                                                anchorEl={anchorEl}
-                                                open={openCat}
-                                                onClose={handleCatClose}
-                                                anchorOrigin={{
-                                                    horizontal: "right",
-                                                }}
+                                            <Link
+                                                to={`/products/${category.routeName}`}
+                                                className={classes.catLinks}
                                             >
-                                                <MenuList>
-                                                    <MenuItem
-                                                        onClick={handleCatClose}
-                                                    >
-                                                        {categories.map(
-                                                            (category) => (
-                                                                <Link
-                                                                    to={`/products/${category.routeName}`}
-                                                                    key={
-                                                                        category.title
-                                                                    }
-                                                                >
-                                                                    {
-                                                                        category.title
-                                                                    }
-                                                                </Link>
-                                                            )
-                                                        )}
-                                                    </MenuItem>
-                                                </MenuList>
-                                            </Menu>
-                                        </ClickAwayListener>
-                                    }
-                                </Popper>
+                                                {category.title}
+                                            </Link>
+                                        </MenuItem>
+                                    ))}
+                                </Menu>
                             </Hidden>
                             <Hidden mdUp>
                                 <MenuRounded
@@ -110,12 +102,12 @@ const Navbar = ({ categories }) => {
                                 />
                             </Hidden>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={4} className={classes.gridcenter}>
                             <Link to="/" className={classes.homelink}>
                                 COPYPAXI
                             </Link>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={4} className={classes.gridRight}>
                             <Hidden xsDown>
                                 <Link to="/contact" className={classes.link}>
                                     CONTACT US
@@ -125,6 +117,7 @@ const Navbar = ({ categories }) => {
                                 component={Link}
                                 to="/cart"
                                 color="default"
+                                disableRipple
                                 className={classes.cartBtn}
                             >
                                 <Badge
@@ -142,62 +135,143 @@ const Navbar = ({ categories }) => {
                     </Grid>
 
                     <SwipeableDrawer
-                        className={classes.drawer}
+                        className={classes.mobileDrawerContainer}
                         open={openMobile}
-                        anchor="right"
+                        anchor="top"
                         onOpen={() => setOpenMobile(true)}
                         onClose={() => setOpenMobile(false)}
                     >
-                        <ArrowRight
-                            className={classes.navCloseToggle}
-                            onClick={() => setOpenMobile(false)}
-                        />
-                        <List>
-                            <ListItem>
-                                <Link
-                                    to="/"
-                                    onClick={() => setOpenMobile(false)}
+                        <Container>
+                            <Grid
+                                container
+                                className={classes.mobileDrawerGrid}
+                            >
+                                <Grid item xs={4}>
+                                    <ArrowRight
+                                        className={classes.navCloseToggle}
+                                        onClick={() => setOpenMobile(false)}
+                                    />
+                                </Grid>
+                                <Grid
+                                    item
+                                    xs={4}
+                                    className={classes.gridcenter}
                                 >
-                                    HOME
-                                </Link>
-                            </ListItem>
-                            <ListItem>
-                                <Link to="/products">All Products</Link>
-                            </ListItem>
-                            <ListItem>
-                                <Button onClick={handleDropdown}>
-                                    Categories
-                                </Button>
-                                <Popper
-                                    open={openCat}
-                                    disablePortal={true}
-                                    transition={true}
-                                >
-                                    {
-                                        <ClickAwayListener
-                                            onClickAway={handleCatClose}
+                                    <Link
+                                        to="/"
+                                        className={classes.homelink}
+                                        onClick={() => setOpenMobile(false)}
+                                    >
+                                        COPYPAXI
+                                    </Link>
+                                </Grid>
+                                <Grid item xs={4} className={classes.gridRight}>
+                                    <IconButton
+                                        component={Link}
+                                        to="/cart"
+                                        color="default"
+                                        disableRipple
+                                        className={classes.cartBtn}
+                                        onClick={() => setOpenMobile(false)}
+                                    >
+                                        <Badge
+                                            badgeContent={
+                                                quantities.length !== 0
+                                                    ? totalQty
+                                                    : null
+                                            }
+                                            color="secondary"
                                         >
-                                            <Menu
-                                                anchorEl={anchorEl}
-                                                open={openCat}
-                                                onClose={handleCatClose}
-                                                anchorOrigin={{
-                                                    horizontal: "right",
-                                                }}
-                                            >
-                                                <MenuList>
-                                                    <MenuItem
-                                                        onClick={handleCatClose}
+                                            <ShoppingCart />
+                                        </Badge>
+                                    </IconButton>
+                                </Grid>
+                            </Grid>
+                        </Container>
+                        <Grid
+                            container
+                            alignItems="center"
+                            justifyContent="center"
+                        >
+                            <Grid item className={classes.mobileDrawerList}>
+                                <List>
+                                    <Divider className={classes.topDivider} />
+                                    <ListItem>
+                                        <Link
+                                            to="/"
+                                            onClick={() => setOpenMobile(false)}
+                                            className={classes.linkMobile}
+                                        >
+                                            HOME
+                                        </Link>
+                                    </ListItem>
+                                    <Divider />
+                                    <ListItem>
+                                        <Link
+                                            to="/contact"
+                                            onClick={() => setOpenMobile(false)}
+                                            className={classes.linkMobile}
+                                        >
+                                            CONTACT US
+                                        </Link>
+                                    </ListItem>
+                                    <Divider />
+                                    <ListItem>
+                                        <Link
+                                            to="/products"
+                                            onClick={() => setOpenMobile(false)}
+                                            className={classes.linkMobile}
+                                        >
+                                            ALL PRODUCTS
+                                        </Link>
+                                    </ListItem>
+                                    <Divider />
+
+                                    <ListItem>
+                                        <Button
+                                            onClick={handleDropdown}
+                                            className={classes.linkMobile}
+                                            disableRipple
+                                        >
+                                            Categories <ArrowRight />
+                                        </Button>
+                                        <Menu
+                                            className={classes.menuNav}
+                                            open={openCat}
+                                            onClose={handleCatClose}
+                                            anchorEl={anchorEl}
+                                            getContentAnchorEl={null}
+                                            anchorOrigin={{
+                                                vertical: "bottom",
+                                                horizontal: "center",
+                                            }}
+                                            transformOrigin={{
+                                                vertical: "top",
+                                                horizontal: "center",
+                                            }}
+                                        >
+                                            {categories.map((category) => (
+                                                <MenuItem
+                                                    onClick={handleCatClose}
+                                                    className={classes.menuItem}
+                                                    key={category.title}
+                                                >
+                                                    <Link
+                                                        to={`/products/${category.routeName}`}
+                                                        className={
+                                                            classes.catLinks
+                                                        }
                                                     >
-                                                        {categories}
-                                                    </MenuItem>
-                                                </MenuList>
-                                            </Menu>
-                                        </ClickAwayListener>
-                                    }
-                                </Popper>
-                            </ListItem>
-                        </List>
+                                                        {category.title}
+                                                    </Link>
+                                                </MenuItem>
+                                            ))}
+                                        </Menu>
+                                    </ListItem>
+                                    <Divider />
+                                </List>
+                            </Grid>
+                        </Grid>
                     </SwipeableDrawer>
                 </Container>
             </Toolbar>

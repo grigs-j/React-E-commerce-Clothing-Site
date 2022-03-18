@@ -1,3 +1,5 @@
+import React, { useContext } from "react";
+import "./globalstyles.css";
 import {
     createTheme,
     responsiveFontSizes,
@@ -5,7 +7,6 @@ import {
     CssBaseline,
     Hidden,
 } from "@material-ui/core";
-import React, { useContext } from "react";
 import {
     BrowserRouter as Router,
     Routes,
@@ -20,30 +21,26 @@ import Cart from "./components/Cart/Cart";
 import ContactPage from "./components/ContactPage/ContactPage";
 import AccentBar from "./components/AccentBar/AccentBar";
 import Footer from "./components/Footer/Footer";
+import EmptyCart from "./components/EmptyCart/EmptyCart";
 import { productsData, categoriesData } from "./data";
 import { Context } from "./Context";
 
 let theme = createTheme({
     typography: {
         fontFamily: "Josefin Sans",
-        transition: "all 1000ms fade-in-out",
     },
 });
 theme = responsiveFontSizes(theme);
 
 // TODO:
-// - NAV STYLES +
-// - POPPER STYLES
-// - MOBILE MENU
 // - PAGINATION
-// - SEARCHBAR?
 // - CHECKOUT
 
 function App() {
     const { savedItems } = useContext(Context);
 
     const PrivateRoute = ({ children }) => {
-        return savedItems.length > 0 ? children : <Navigate to="/" />;
+        return savedItems.length > 0 ? children : <EmptyCart />;
     };
 
     return (
@@ -74,6 +71,7 @@ function App() {
                                     products={productsData}
                                     categories={categoriesData}
                                 />
+
                                 <Footer />
                             </>
                         }

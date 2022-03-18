@@ -92,22 +92,52 @@ const Cart = () => {
                         <Card className={classes.card}>
                             <CardContent>
                                 <Grid container direction="column">
-                                    <Typography>copypaxi/logo</Typography>
-                                    <Divider />
-                                    <Typography>Order Total</Typography>
-                                    <Typography>Shipping: $2.99</Typography>
-                                    <Divider />
-                                    <Typography>
-                                        Total: {totalPrice(savedItems)}
+                                    <Typography
+                                        variant="h4"
+                                        align="center"
+                                        className={classes.logo}
+                                    >
+                                        COPYPAXI
+                                    </Typography>
+                                    <Divider className={classes.logo} />
+                                    <Typography
+                                        variant="body1"
+                                        className={classes.logo}
+                                    >
+                                        Order Total: ${totalPrice()}
+                                    </Typography>
+                                    <Typography
+                                        variant="body1"
+                                        className={classes.logo}
+                                    >
+                                        Shipping: $2.99 ea
+                                    </Typography>
+                                    <Divider className={classes.logo} />
+                                    <Typography
+                                        variant="h6"
+                                        align="center"
+                                        className={classes.logo}
+                                    >
+                                        Total: $
+                                        {(
+                                            Number(totalPrice()) +
+                                            Number(shippingPrice())
+                                        ).toFixed(2)}
                                     </Typography>
                                     <CardActions>
                                         <Button
                                             size="medium"
+                                            variant="outlined"
                                             onClick={() => setSavedItems([])}
                                         >
                                             EMPTY CART
                                         </Button>
-                                        <Button size="medium">CHECKOUT</Button>
+                                        <Button
+                                            size="medium"
+                                            variant="outlined"
+                                        >
+                                            CHECKOUT
+                                        </Button>
                                     </CardActions>
                                 </Grid>
                             </CardContent>

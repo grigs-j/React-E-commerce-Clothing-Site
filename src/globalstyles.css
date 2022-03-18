@@ -1,0 +1,11 @@
+.MuiDrawer-paper {
+    width: 100% !important;
+    height: 100vh !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.MuiPopover-paper {
+    width: 100% !important;
+    max-width: 300px !important;
+}
