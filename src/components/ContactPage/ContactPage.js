@@ -1,11 +1,4 @@
-import {
-    Typography,
-    Container,
-    Grid,
-    ListItemText,
-    List,
-    Divider,
-} from "@material-ui/core";
+import { Typography, Container, Grid, Divider } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 import useStyles from "./styles";

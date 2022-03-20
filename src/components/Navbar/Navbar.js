@@ -14,12 +14,7 @@ import {
     Container,
     Divider,
 } from "@material-ui/core";
-import {
-    ArrowRight,
-    ArrowRightAlt,
-    MenuRounded,
-    ShoppingCart,
-} from "@material-ui/icons";
+import { ArrowRight, MenuRounded, ShoppingCart } from "@material-ui/icons";
 import React, { useState, useContext } from "react";
 import { Context } from "../../Context";
 import useStyles from "./styles";

@@ -7,12 +7,7 @@ import {
     CssBaseline,
     Hidden,
 } from "@material-ui/core";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductPage from "./components/ProductPage/ProductPage";
 import Category from "./components/Category/Category";
 import Navbar from "./components/Navbar/Navbar";
@@ -25,6 +20,11 @@ import EmptyCart from "./components/EmptyCart/EmptyCart";
 import { productsData, categoriesData } from "./data";
 import { Context } from "./Context";
 
+// TODO:
+// cart add/subtract buttons
+// pagination
+// product image carousel
+
 let theme = createTheme({
     typography: {
         fontFamily: "Josefin Sans",
@@ -32,15 +32,18 @@ let theme = createTheme({
 });
 theme = responsiveFontSizes(theme);
 
-// TODO:
-// - PAGINATION
-// - CHECKOUT
-
 function App() {
     const { savedItems } = useContext(Context);
 
     const PrivateRoute = ({ children }) => {
-        return savedItems.length > 0 ? children : <EmptyCart />;
+        return savedItems.length > 0 ? (
+            children
+        ) : (
+            <>
+                <AccentBar />
+                <EmptyCart />;
+            </>
+        );
     };
 
     return (
@@ -116,6 +119,7 @@ function App() {
                         path="/cart"
                         element={
                             <PrivateRoute>
+                                <AccentBar />
                                 <Cart />
                                 <Footer />
                             </PrivateRoute>

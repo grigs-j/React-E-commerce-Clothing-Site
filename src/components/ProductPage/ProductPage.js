@@ -15,7 +15,7 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../../Context";
 import useStyles from "./styles";
 
-const ProductPage = ({ products, categories }) => {
+const ProductPage = ({ products }) => {
     const classes = useStyles();
     const [size, setSize] = useState("");
     const [qty, setQty] = useState(1);

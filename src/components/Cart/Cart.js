@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Context } from "../../Context";
 import {
     Button,
@@ -33,16 +33,22 @@ const Cart = () => {
         }
     };
 
+    const addItem = (item) => {
+        item.qty + 1;
+    };
+
     const shippingPrice = () => {
         let shippingNum = savedItems.length;
         return shippingNum * 2.99;
     };
 
-    const handleCheckout = () => {
-        setTimeout(() => {
-            setSavedItems([]);
-        }, 2000);
-    };
+    // const handleCheckout = () => {
+    //     setTimeout(() => {
+    //         setSavedItems([]);
+    //     }, 2000);
+    // };
+
+    console.log(savedItems);
 
     return (
         <main className={classes.container}>
@@ -51,7 +57,7 @@ const Cart = () => {
                     <Grid item>
                         <List>
                             {savedItems.map((item, i) => (
-                                <ListItem key={i}>
+                                <ListItem key={item.productCode}>
                                     <Grid container>
                                         <Grid item>
                                             <img
@@ -73,7 +79,16 @@ const Cart = () => {
                                                 Size: {item.size}
                                             </Typography>
                                             <Typography variant="body1">
+                                                <Button size="large">-</Button>
                                                 Quantity: {item.qty}
+                                                <Button
+                                                    size="large"
+                                                    onClick={() =>
+                                                        addItem(item)
+                                                    }
+                                                >
+                                                    +
+                                                </Button>
                                             </Typography>
                                         </Grid>
                                     </Grid>
